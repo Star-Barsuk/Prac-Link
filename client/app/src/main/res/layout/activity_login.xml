@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:src="@drawable/image1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription,ImageContrastCheck" />
+
+    <TextView
+        android:id="@+id/login_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:text="@string/activity_register_login"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/email_ll"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="34dp"
+        app:layout_constraintTop_toBottomOf="@id/login_title_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/icon_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/email_icon"
+            android:layout_gravity="center_vertical"
+            tools:ignore="ContentDescription" />
+
+        <EditText
+            android:id="@+id/email_et"
+            android:layout_width="242dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:hint="@string/activity_auth_email"
+            android:textColor="@color/black"
+            android:textColorHint="#999999"
+            android:inputType="textEmailAddress"
+            tools:ignore="Autofill,TextContrastCheck,TextFields,TouchTargetSizeCheck" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/password_lin"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@id/email_ll"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/icon_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/password_icon"
+            android:layout_gravity="center_vertical"
+            tools:ignore="ContentDescription" />
+
+        <EditText
+            android:id="@+id/password_et"
+            android:layout_width="242dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:hint="@string/activity_auth_password"
+            android:textColor="@color/black"
+            android:textColorHint="#999999"
+            android:inputType="textPassword|textNoSuggestions"
+            tools:ignore="Autofill,TextContrastCheck,TextFields,TouchTargetSizeCheck" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="268dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="@color/blue"
+        android:text="@string/activity_register_login"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_lin"
+        tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
+
+    <LinearLayout
+        android:id="@+id/redirect_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/login_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_register_new_to_here"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/go_to_register_activity_tv"
+            android:textColor="@color/blue"
+            android:text="@string/activity_auth_sign_up"
+            android:layout_marginStart="7dp"/>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/redirect_ll"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

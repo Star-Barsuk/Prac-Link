@@ -1,0 +1,15 @@
+{
+  "create": "CREATE TABLE IF NOT EXISTS chat_members (chat_id INT NOT NULL, user_id INT NOT NULL, joined_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (chat_id, user_id), FOREIGN KEY (chat_id) REFERENCES chats(id) ON DELETE CASCADE, FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE);",
+  "drop": "DROP TABLE IF EXISTS chat_members;",
+  "insert": "INSERT INTO chat_members (chat_id, user_id) VALUES (%s, %s);",
+  "delete": {
+    "by_chat_and_user": "DELETE FROM chat_members WHERE chat_id = %s AND user_id = %s;",
+    "by_chat": "DELETE FROM chat_members WHERE chat_id = %s;"
+  },
+  "fetch": {
+    "member_by_chat_and_user": "SELECT chat_id, user_id, joined_at FROM chat_members WHERE chat_id = %s AND user_id = %s;",
+    "members_by_chat": "SELECT u.id, u.username, u.email FROM chat_members cm JOIN users u ON cm.user_id = u.id WHERE cm.chat_id = %s;",
+    "chats_by_user": "SELECT chat_id FROM chat_members WHERE user_id = %s;",
+    "is_member": "SELECT 1 FROM chat_members WHERE chat_id = %s AND user_id = %s LIMIT 1;"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "create": "CREATE TABLE IF NOT EXISTS messages (id INT AUTO_INCREMENT PRIMARY KEY, chat_id INT NOT NULL, sender_id INT NOT NULL, content TEXT NOT NULL, sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (chat_id) REFERENCES chats(id) ON DELETE CASCADE, FOREIGN KEY (sender_id) REFERENCES users(id) ON DELETE CASCADE);",
+  "drop": "DROP TABLE IF EXISTS messages;",
+  "insert": "INSERT INTO messages (chat_id, sender_id, content) VALUES (%s, %s, %s);",
+  "delete": {
+    "by_id": "DELETE FROM messages WHERE id = %s;",
+    "by_chat_id": "DELETE FROM messages WHERE chat_id = %s;"
+  },
+  "update": "UPDATE messages SET content = %s WHERE id = %s;",
+  "fetch": {
+    "by_id": "SELECT id, chat_id, sender_id, content, sent_at FROM messages WHERE id = %s;",
+    "by_chat": "SELECT m.id, m.chat_id, m.content, m.sent_at, u.id AS sender_id, u.username AS sender_username, u.email AS sender_email FROM messages m JOIN users u ON m.sender_id = u.id WHERE m.chat_id = %s ORDER BY m.sent_at ASC;",
+    "new_messages": "SELECT m.id, m.chat_id, m.content, m.sent_at, u.id AS sender_id, u.username AS sender_username, u.email AS sender_email FROM messages m JOIN users u ON m.sender_id = u.id WHERE m.chat_id = %s AND m.id > %s ORDER BY m.sent_at ASC;",
+    "last_message": "SELECT content FROM messages WHERE chat_id = %s ORDER BY sent_at DESC LIMIT 1;"
+  }
+}

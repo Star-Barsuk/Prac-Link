@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Практика ХГУ</string>
+
+    <string name="activity_auth_email">Email</string>
+    <string name="activity_auth_password">Пароль</string>
+    <string name="activity_auth_sign_up">Зарегистрироваться</string>
+    <string name="activity_register_login">Войти</string>
+    <string name="activity_register_new_to_here">Впервые здесь?</string>
+    <string name="activity_login_username">Имя пользователя</string>
+
+    <string name="main_activity_nav_chats">Чаты</string>
+    <string name="main_activity_nav_users">Пользователи</string>
+    <string name="main_activity_nav_profile">Профиль</string>
+    <string name="main_activity_nav_practice">Практика</string>
+
+    <string name="dialog_action_cancel">Отмена</string>
+    <string name="dialog_action_confirm">ОК</string>
+    <string name="dialog_user_action_new_chat">Создать новый чат</string>
+    <string name="dialog_chat_action_delete_chat">Вы уверены, что хотите удалить этот чат?</string>
+
+    <string name="fragment_chats_no_chats_yet">Пока нет чатов</string>
+    <string name="activity_chat_type_your_message">Введите сообщение...</string>
+
+    <string name="select_year">Выберите год</string>
+    <string name="select_course">Выберите курс</string>
+    <string name="select_group">Выберите группу</string>
+    <string name="please_select">Выберите группу и курс, чтобы увидеть доступные базы практики</string>
+</resources>

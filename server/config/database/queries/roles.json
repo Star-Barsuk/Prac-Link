@@ -1,0 +1,14 @@
+{
+  "create": "CREATE TABLE IF NOT EXISTS roles (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50) NOT NULL UNIQUE, description VARCHAR(255));",
+  "drop": "DROP TABLE IF EXISTS roles;",
+  "insert": "INSERT INTO roles (name, description) VALUES (%s, %s);",
+  "delete": {
+    "by_id": "DELETE FROM roles WHERE id = %s;"
+  },
+  "update": "UPDATE roles SET name = %s, description = %s WHERE id = %s;",
+  "fetch": {
+    "all": "SELECT id, name, description FROM roles ORDER BY name;",
+    "by_name": "SELECT id, name, description FROM roles WHERE name = %s;",
+    "by_id": "SELECT id, name, description FROM roles WHERE id = %s;"
+  }
+}

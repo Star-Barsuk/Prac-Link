@@ -1,0 +1,3 @@
+
+class MyDatabaseError(Exception):
+    pass

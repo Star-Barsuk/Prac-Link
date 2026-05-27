@@ -1,0 +1,14 @@
+{
+  "create": "CREATE TABLE IF NOT EXISTS courses (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50) NOT NULL UNIQUE);",
+  "drop": "DROP TABLE IF EXISTS courses;",
+  "insert": "INSERT INTO courses (name) VALUES (%s);",
+  "delete": {
+    "by_id": "DELETE FROM courses WHERE id = %s;"
+  },
+  "update": "UPDATE courses SET name = %s WHERE id = %s;",
+  "fetch": {
+    "all": "SELECT id, name FROM courses;",
+    "by_id": "SELECT id, name FROM courses WHERE id = %s;",
+    "by_name": "SELECT id, name FROM courses WHERE name = %s;"
+  }
+}

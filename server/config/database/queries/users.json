@@ -1,0 +1,18 @@
+{
+    "create": "CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(255) NOT NULL UNIQUE, email VARCHAR(255) NOT NULL UNIQUE, password_hash VARCHAR(255) NOT NULL, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);",
+    "drop": "DROP TABLE IF EXISTS users;",
+    "insert": "INSERT INTO users (username, email, password_hash) VALUES (%s, %s, %s);",
+    "delete": {
+        "by_id": "DELETE FROM users WHERE id = %s;",
+        "by_username": "DELETE FROM users WHERE username = %s;"
+    },
+    "update": "UPDATE users SET username = %s, email = %s, password_hash = %s WHERE id = %s;",
+    "fetch": {
+        "by_id": "SELECT id, username, email, password_hash, created_at FROM users WHERE id = %s;",
+        "by_username": "SELECT id, username, email, password_hash, created_at FROM users WHERE username = %s;",
+        "by_email": "SELECT id, username, email, password_hash, created_at FROM users WHERE email = %s;",
+        "all": "SELECT id, username, email, password_hash, created_at FROM users;",
+        "all_except": "SELECT id, username, email, password_hash, created_at FROM users WHERE id != %s;",
+        "count": "SELECT COUNT(*) AS count FROM users;"
+    }
+}

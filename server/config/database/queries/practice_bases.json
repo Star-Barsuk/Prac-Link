@@ -1,0 +1,13 @@
+{
+  "create": "CREATE TABLE IF NOT EXISTS practice_bases (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) NOT NULL, description TEXT NOT NULL, capacity INT NOT NULL, year_id INT NOT NULL, course_id INT, group_id INT, supervisor_id INT NOT NULL, FOREIGN KEY (year_id) REFERENCES years(id) ON DELETE CASCADE, FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE SET NULL, FOREIGN KEY (group_id) REFERENCES `groups`(id) ON DELETE SET NULL, FOREIGN KEY (supervisor_id) REFERENCES users(id) ON DELETE CASCADE);",
+  "drop": "DROP TABLE IF EXISTS practice_bases;",
+  "insert": "INSERT INTO practice_bases (name, description, capacity, year_id, course_id, group_id, supervisor_id) VALUES (%s, %s, %s, %s, %s, %s, %s);",
+  "update": "UPDATE practice_bases SET name = %s, description = %s, capacity = %s, supervisor_id = %s WHERE id = %s;",
+  "delete": {
+    "by_id": "DELETE FROM practice_bases WHERE id = %s;"
+  },
+  "fetch": {
+    "by_id": "SELECT pb.id, pb.name, pb.description, pb.capacity, pb.year_id, pb.course_id, pb.group_id, pb.supervisor_id, u.username AS supervisor FROM practice_bases pb JOIN users u ON pb.supervisor_id = u.id WHERE pb.id = %s;",
+    "by_year_course_group": "SELECT pb.id, pb.name, pb.description, pb.capacity, pb.course_id, pb.group_id, pb.supervisor_id, u.username AS supervisor FROM practice_bases pb JOIN users u ON pb.supervisor_id = u.id WHERE pb.year_id = %s AND pb.course_id = %s AND (%s IS NULL OR pb.group_id = %s);"
+  }
+}

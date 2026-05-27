@@ -1,0 +1,13 @@
+{
+  "create": "CREATE TABLE IF NOT EXISTS practice_registrations (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT NOT NULL, base_id INT NOT NULL, registered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE, FOREIGN KEY (base_id) REFERENCES practice_bases(id) ON DELETE CASCADE);",
+  "drop": "DROP TABLE IF EXISTS practice_registrations;",
+  "insert": "INSERT INTO practice_registrations (user_id, base_id) VALUES (%s, %s);",
+  "delete": {
+    "by_id": "DELETE FROM practice_registrations WHERE id = %s;",
+    "by_user_and_base": "DELETE FROM practice_registrations WHERE user_id = %s AND base_id = %s;"
+  },
+  "fetch": {
+    "participants": "SELECT u.id, u.username FROM practice_registrations pr JOIN users u ON pr.user_id = u.id WHERE pr.base_id = %s;",
+    "user_registrations": "SELECT pb.id, pb.name FROM practice_registrations pr JOIN practice_bases pb ON pr.base_id = pb.id WHERE pr.user_id = %s;"
+  }
+}

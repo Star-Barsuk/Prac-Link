@@ -1,0 +1,16 @@
+{
+    "tables": {
+        "years": {},
+        "courses": {},
+        "roles": {},
+        "users": {},
+        "user_roles": {},
+        "groups": {},
+        "practice_bases": {},
+        "chats": {},
+        "messages": {},
+        "chat_members": {},
+        "practice_registrations": {},
+        "student_groups": {}
+    }
+}

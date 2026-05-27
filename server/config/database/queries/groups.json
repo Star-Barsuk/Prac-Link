@@ -1,0 +1,17 @@
+{
+  "create": "CREATE TABLE IF NOT EXISTS `groups` (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50) NOT NULL, year_id INT NOT NULL, course_id INT NOT NULL, FOREIGN KEY (year_id) REFERENCES years(id) ON DELETE CASCADE, FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE);",
+  "drop": "DROP TABLE IF EXISTS `groups`;",
+  "insert": "INSERT INTO `groups` (name, year_id, course_id) VALUES (%s, %s, %s);",
+  "delete": {
+    "by_id": "DELETE FROM `groups` WHERE id = %s;"
+  },
+  "update": "UPDATE `groups` SET name = %s, year_id = %s, course_id = %s WHERE id = %s;",
+  "fetch": {
+    "by_id": "SELECT id, name, year_id, course_id FROM `groups` WHERE id = %s;",
+    "by_name": "SELECT id, name, year_id, course_id FROM `groups` WHERE name = %s;",
+    "by_year": "SELECT id, name, year_id, course_id FROM `groups` WHERE year_id = %s;",
+    "by_year_course": "SELECT id, name, year_id, course_id FROM `groups` WHERE year_id = %s AND course_id = %s;",
+    "by_name_year_course": "SELECT id, name, year_id, course_id FROM `groups` WHERE name = %s AND year_id = %s AND course_id = %s;",
+    "all": "SELECT id, name, year_id, course_id FROM `groups`;"
+  }
+}

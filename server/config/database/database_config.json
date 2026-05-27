@@ -1,0 +1,9 @@
+{
+  "database": {
+    "host": "localhost",
+    "user": "prac-4-admin",
+    "password": "admin",
+    "name": "prac-4",
+    "port": 3307
+  }
+}
