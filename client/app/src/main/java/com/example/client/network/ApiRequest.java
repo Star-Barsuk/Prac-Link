@@ -16,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -136,5 +137,48 @@ public abstract class ApiRequest {
         } else {
             new Handler(Looper.getMainLooper()).post(action);
         }
+    }
+
+    protected static void sendMultipartRequest(Context context,
+                                               String url,
+                                               MultipartBody requestBody,
+                                               DocumentRequests.DocumentCallback callback) {
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(requestBody)
+                .build();
+
+        Log.i(TAG, "→ UPLOAD REQUEST: POST " + url);
+
+        client.newCall(request).enqueue(new okhttp3.Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                Log.e(TAG, "Upload failed", e);
+                runOnUiThread(context, () ->
+                        callback.onResponse(false, "Нет соединения с сервером"));
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                String responseBody = response.body() != null ? response.body().string() : "";
+                Log.i(TAG, "← UPLOAD RESPONSE: Code " + response.code());
+
+                runOnUiThread(context, () -> {
+                    if (response.isSuccessful()) {
+                        callback.onResponse(true, "Файл успешно загружен");
+                    } else {
+                        String errorMsg = "Ошибка сервера";
+                        try {
+                            if (responseBody.startsWith("{")) {
+                                JSONObject json = new JSONObject(responseBody);
+                                errorMsg = json.optString("detail", json.optString("message", errorMsg));
+                            }
+                        } catch (Exception ignored) {}
+                        callback.onResponse(false, errorMsg);
+                    }
+                });
+            }
+        });
     }
 }

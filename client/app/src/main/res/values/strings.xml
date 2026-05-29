@@ -9,6 +9,7 @@
     <string name="activity_login_username">Имя пользователя</string>
 
     <string name="main_activity_nav_chats">Чаты</string>
+    <string name="main_activity_nav_documents">Документы</string>
     <string name="main_activity_nav_users">Пользователи</string>
     <string name="main_activity_nav_profile">Профиль</string>
     <string name="main_activity_nav_practice">Практика</string>

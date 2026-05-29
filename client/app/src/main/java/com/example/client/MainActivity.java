@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.client.bottom_nav.practice.PracticeFragment;
 import com.example.client.bottom_nav.chats.ChatsFragment;
+import com.example.client.bottom_nav.documents.DocumentsFragment;
 import com.example.client.bottom_nav.users.UsersFragment;
 import com.example.client.bottom_nav.profile.ProfileFragment;
 import com.example.client.view_models.UserViewModel;
@@ -54,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
                 replaceFragment(new ProfileFragment());
             } else if (itemId == R.id.practice) {
                 replaceFragment(new PracticeFragment());
+            }
+            else if (itemId == R.id.documents) {          // ← добавили
+                replaceFragment(new DocumentsFragment());
             }
             return true;
         });

@@ -6,6 +6,11 @@
         android:icon="@drawable/baseline_addchart_24"/>
 
     <item
+        android:id="@+id/documents"
+        android:title="@string/main_activity_nav_documents"
+        android:icon="@drawable/baseline_description_24"/>
+
+    <item
         android:id="@+id/chats"
         android:title="@string/main_activity_nav_chats"
         android:icon="@drawable/baseline_chat_bubble_outline_24"/>
