@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+
 from .routes import (
     reset,
     users,
@@ -11,7 +12,8 @@ from .routes import (
     chats,
     chat_members,
     messages,
-    roles
+    roles,
+    documents
 )
 
 router = APIRouter()
@@ -28,3 +30,4 @@ router.include_router(practice_registrations.router, prefix="/practice", tags=["
 router.include_router(chats.router, prefix="/chats", tags=["Chats"])
 router.include_router(chat_members.router, prefix="/chat-members", tags=["Chat Members"])
 router.include_router(messages.router, prefix="/messages", tags=["Messages"])
+router.include_router(documents.router, prefix="/documents", tags=["Documents"])

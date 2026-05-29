@@ -11,6 +11,7 @@
         "messages": {},
         "chat_members": {},
         "practice_registrations": {},
-        "student_groups": {}
+        "student_groups": {},
+        "documents": {}
     }
 }

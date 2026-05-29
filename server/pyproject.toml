@@ -13,6 +13,7 @@ uvicorn = { extras = ["standard"], version = "^0.34.3" }
 pydantic = {extras = ["email"], version = "^2.11.6"}
 data-base = { path = "./data-base", develop = true}
 log-manager = { path = "./log-manager", develop = true}
+python-multipart = "^0.0.29"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

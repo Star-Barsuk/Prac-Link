@@ -1,0 +1,13 @@
+{
+  "create": "CREATE TABLE IF NOT EXISTS documents (id INT AUTO_INCREMENT PRIMARY KEY, practice_base_id INT NOT NULL, user_id INT NOT NULL, document_type VARCHAR(100) NOT NULL, file_name VARCHAR(255) NOT NULL, file_path VARCHAR(512) NOT NULL, uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (practice_base_id) REFERENCES practice_bases(id) ON DELETE CASCADE, FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE, UNIQUE KEY unique_document (practice_base_id, user_id, document_type));",
+  "drop": "DROP TABLE IF EXISTS documents;",
+  "insert": "INSERT INTO documents (practice_base_id, user_id, document_type, file_name, file_path) VALUES (%s, %s, %s, %s, %s);",
+  "delete": {
+    "by_id": "DELETE FROM documents WHERE id = %s;"
+  },
+  "update": "UPDATE documents SET practice_base_id = %s, user_id = %s, document_type = %s, file_name = %s, file_path = %s WHERE id = %s;",
+  "fetch": {
+    "by_user": "SELECT * FROM documents WHERE user_id = %s ORDER BY uploaded_at DESC;",
+    "by_practice_and_user": "SELECT * FROM documents WHERE practice_base_id = %s AND user_id = %s;"
+  }
+}

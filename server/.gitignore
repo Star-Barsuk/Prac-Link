@@ -223,3 +223,6 @@ __marimo__/
 .contextignore
 context.txt
 scripts/collect_context.sh
+
+### Specific ###
+uploads/
